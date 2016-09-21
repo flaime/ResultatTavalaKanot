@@ -8,7 +8,7 @@ Ett program för att kunna läsa in resultat som skapas under tävlings gång oc
 5. Så man kan gå in på nätet och i i stort realtid se resultaten
 
 
-Funkar rikigt fint faktiskt, men en del bör kunna förbättras / fixas /läggas till. Sedan är inte koden den finaste heller då det blev rätt ont om tid att skriva klart alla innan tävlingen som jagtänkt tästa/ha det till.
+Funkar rikigt fint faktiskt, men en del bör kunna förbättras/fixas/läggas till. Sedan är inte koden den finaste heller då det blev rätt ont om tid att skriva klart alla innan tävlingen som jagtänkt tästa/ha det till.
 
 Men några saker jag vet och tänkte fixa när jag får tid
 - fixa en mindre UI defekt om att fönstret är lite för litet vid start
@@ -24,7 +24,7 @@ Programet är designat för att läsa in resulat PDF:er som kommer ur kanottävl
 
 Anvädner också en hel del separata biblotek ca 5 håller inte rikgit koll då jag bytt ut/testat några olika som ligger kvar. Men ja det kan vara en sak till att resna upp bland dem också och skaffa ett bättre byggsystem istället för alla lösa Jar filer som det är nu. Ge gärna förslag för har aldrig varit riktigt kompis med något byggsystem.
 
-##hur man går tillväga för att köra
+##Hur man går tillväga för att köra
 Lättast är att ladda ner senaste versionen som jag sett till att bygga samman och laddat upp i form av en Jar fil. Som går att hitta under **release**.  [direktlänk här]( https://github.com/flaime/ResultatTavalaKanot/releases)
 
 Annars för abolut senaste fixarna trixarna osv så får man bygga själv detta är ett **eclips** prodjekt så kör in det där så ska det vara körbart på en gång. Jag ser till att inte puscha saker som gör att något går sönder (i alla fall inte som jag märker) och inte i alla fall till master branchen :)
