@@ -20,7 +20,7 @@ Men några saker jag vet och tänkte fixa när jag får tid
 
 
 ##Testköra
-Programet är designat för att läsa in resulat PDF:er som kommer ur kanottävlingssytem (ERTornamnet) producerar. Men hoppas kunna bredda det till bättre för att parasa PDF:er som jag gjort är inte hundra... 
+Programet är designat för att läsa in resulat PDF:er som kommer ur kanottävlingssytem (ERTornamnet) producerar ([se dem här](https://github.com/flaime/ResultatTavalaKanot/tree/master/PDFer%20att%20testa%20med)). Men hoppas kunna bredda det till bättre för att parasa PDF:er som jag gjort är inte hundra... 
 
 Anvädner också en hel del separata biblotek ca 5 håller inte rikgit koll då jag bytt ut/testat några olika som ligger kvar. Men ja det kan vara en sak till att resna upp bland dem också och skaffa ett bättre byggsystem istället för alla lösa Jar filer som det är nu. Ge gärna förslag för har aldrig varit riktigt kompis med något byggsystem.
 
