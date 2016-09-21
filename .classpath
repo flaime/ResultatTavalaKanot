@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/pdfbox-app-2.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/tika-app-1.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/PDFxStream.Java-3.3.7/PDFxStream.Java-3.3.7/lib/PDFxStream.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/PDFClown-0.1.2-Beta/PDFClown/java/pdfclown.lib/build/package/pdfclown.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/pdfonej_t_p/pdfonej_t_p5.0.0.123/bin/PDFOne.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/jaxrs-ri-2.23.1/jaxrs-ri/lib/jersey-client.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/retrofit-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ahlin/Downloads/jackson-core-2.8.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
