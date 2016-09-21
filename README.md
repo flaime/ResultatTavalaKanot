@@ -13,7 +13,13 @@ Funkar rikigt fint faktiskt, men en del bör kunna förbättras / fixas /läggas
 Men några saker jag vet och tänkte fixa när jag får tid
 - fixa en mindre UI defekt om att fönstret är lite för litet vid start
 - inläsningen göra den stabilare eller helst se om man kan få den att få in reslutaen på annat sätt typ genom databasen som tävlingsystemet använder (det är inte något jag skriver eller har hand om utan detta är helt separat)
-- göra så att den också kan pusha resultaten med jämna tidintervaller
+- göra så att den också kan pusha resultaten med jämna tidintervaller (automatiskt och inte behöver säga till den var gång)
+- göra så att man kan lägga till nya banor direkt i programet.
+- gärna lite interaktion så den kanvara lättare att lägga till personer, typ att den ger förslag på personer och klubbar
+- Något som kan städa upp röra man får Parsningen nu typ att den tittar på olika typer och ser och försöker sätta alla som hamnar i fler kolumn i rätt kolumn. Sedan om den också skulle kunna matcha namn mot en lista så skulle den kunna utföra uppdelnigne mellan namn och klubb bättre när de täcker hela raden. Eller bara skriva om parsningen så den tittar på om råden istället för att bara plocka ut det som en stor klump.
 
 
-Ja lägger upp några resulat PDF:er om ni vill testa men sedan kan sägas att det anvädner en hel del separata biblotek ca 5 håller inte rikgit koll då jag bytt ut/testat några olika som ligger kvar. Men ja det kan vara en sak till att resna upp bland dem också och skaffa ett bättre byggsystem istället för alla lösa Jar filer som det är nu. Ge gärna förslag för har aldrig varit kompis med något byggsystem.
+##Testköra
+Programet är designat för att läsa in resulat PDF:er som kommer ur kanottävlingssytem (ERTornamnet) producerar. Men hoppas kunna bredda det till bättre för att parasa PDF:er som jag gjort är inte hundra... 
+
+Anvädner också en hel del separata biblotek ca 5 håller inte rikgit koll då jag bytt ut/testat några olika som ligger kvar. Men ja det kan vara en sak till att resna upp bland dem också och skaffa ett bättre byggsystem istället för alla lösa Jar filer som det är nu. Ge gärna förslag för har aldrig varit riktigt kompis med något byggsystem.
