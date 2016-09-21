@@ -25,6 +25,6 @@ Programet är designat för att läsa in resulat PDF:er som kommer ur kanottävl
 Anvädner också en hel del separata biblotek ca 5 håller inte rikgit koll då jag bytt ut/testat några olika som ligger kvar. Men ja det kan vara en sak till att resna upp bland dem också och skaffa ett bättre byggsystem istället för alla lösa Jar filer som det är nu. Ge gärna förslag för har aldrig varit riktigt kompis med något byggsystem.
 
 ##hur man går tillväga för att köra
-Lättast är att ladda ner senaste versionen som jag sett till att bygga samman och laddat upp i form av en Jar fil. Som går att hitta under **release**.
+Lättast är att ladda ner senaste versionen som jag sett till att bygga samman och laddat upp i form av en Jar fil. Som går att hitta under **release**.  [direktlänk här]( https://github.com/flaime/ResultatTavalaKanot/releases)
 
 Annars för abolut senaste fixarna trixarna osv så får man bygga själv detta är ett **eclips** prodjekt så kör in det där så ska det vara körbart på en gång. Jag ser till att inte puscha saker som gör att något går sönder (i alla fall inte som jag märker) och inte i alla fall till master branchen :)
