@@ -14,3 +14,6 @@ Men några saker jag vet och tänkte fixa när jag får tid
 - fixa en mindre UI defekt om att fönstret är lite för litet vid start
 - inläsningen göra den stabilare eller helst se om man kan få den att få in reslutaen på annat sätt typ genom databasen som tävlingsystemet använder (det är inte något jag skriver eller har hand om utan detta är helt separat)
 - göra så att den också kan pusha resultaten med jämna tidintervaller
+
+
+Ja lägger upp några resulat PDF:er om ni vill testa men sedan kan sägas att det anvädner en hel del separata biblotek ca 5 håller inte rikgit koll då jag bytt ut/testat några olika som ligger kvar. Men ja det kan vara en sak till att resna upp bland dem också och skaffa ett bättre byggsystem istället för alla lösa Jar filer som det är nu. Ge gärna förslag för har aldrig varit kompis med något byggsystem.
