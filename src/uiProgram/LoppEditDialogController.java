@@ -12,9 +12,7 @@ import javafx.stage.Stage;
 import paresePdf.Lopp;
 
 /**
- * Dialog to edit details of a person.
- * 
- * @author Marco Jakob
+ * @author Liuns men vissa rester efter en Marco Jakob kåd
  */
 public class LoppEditDialogController {
 	
@@ -32,20 +30,6 @@ public class LoppEditDialogController {
     private TextField typAvLoppNummer;
     @FXML
     private TextField datumLable;
-    
-
-//    @FXML
-//    private TextField firstNameField;
-//    @FXML
-//    private TextField lastNameField;
-//    @FXML
-//    private TextField streetField;
-//    @FXML
-//    private TextField postalCodeField;
-//    @FXML
-//    private TextField cityField;
-//    @FXML
-//    private TextField birthdayField;
 
 
     private Stage dialogStage;
@@ -91,14 +75,7 @@ public class LoppEditDialogController {
         else
         	typAvLoppNummer.setText(lopp.getTypNummer());
         datumLable.setText(lopp.getDatum());
-        
-//        firstNameField.setText(person.getFirstName());
-//        lastNameField.setText(person.getLastName());
-//        streetField.setText(person.getStreet());
-//        postalCodeField.setText(Integer.toString(person.getPostalCode()));
-//        cityField.setText(person.getCity());
-//        birthdayField.setText(DateUtil.format(person.getBirthday()));
-//        birthdayField.setPromptText("dd.mm.yyyy");
+      
     }
 
     /**

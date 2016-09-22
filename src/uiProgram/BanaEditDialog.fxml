@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uiProgram.BanaEditController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Editera Bana">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <GridPane vgap="15.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="99.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="267.0" minWidth="10.0" prefWidth="267.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Bana:" />
+                  <Label text="Namn(en):" GridPane.rowIndex="1" />
+                  <Label text="Klubb(arna):" GridPane.rowIndex="2" />
+                  <Label text="Tiden:" GridPane.rowIndex="3" />
+                  <TextField fx:id="banaLable" prefWidth="209.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="namnLable" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="klubbLable" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="tidLable" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </GridPane>
+            <Label text="För att editera banor kan man dubbeklicka direkt på &quot;cellerna&quot; i huvud UI:ett" wrapText="true" />
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" onAction="#handleOk" text="Spara" />
+                  <Button mnemonicParsing="false" onAction="#handleCancel" text="Avbryt" />
+              </buttons>
+            </ButtonBar>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

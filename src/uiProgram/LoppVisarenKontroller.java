@@ -1,7 +1,9 @@
 package uiProgram;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
+import edu.emory.mathcs.backport.java.util.Arrays;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -339,13 +341,15 @@ public class LoppVisarenKontroller {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);
             alert.initOwner(mainUi.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setTitle("Inget markerat");
+            alert.setHeaderText("Inget lopp är markerat");
+            alert.setContentText("Vänligen markera ett lopp.");
 
             alert.showAndWait();
         }
     }
+    
+    
     
     @FXML
     private void visaDetaljer(){
@@ -433,6 +437,77 @@ public class LoppVisarenKontroller {
         private String getString() {
             return getItem() == null ? "" : getItem().toString();
         }
+    }
+    
+    @FXML
+    private void handleRemoveBana() {
+        int selectedIndex = banaTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+        	banaTable.getItems().remove(selectedIndex);
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainUi.getPrimaryStage());
+            alert.setTitle("Ingen markerad");
+            alert.setHeaderText("Ingen bana är markerad");
+            alert.setContentText("Vänligen markera en banan.");
+
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void handleNewBana() {
+    	
+    	
+       
+        
+        
+        Lopp selectedPerson = loppTable.getSelectionModel().getSelectedItem();
+        if (selectedPerson != null) {
+        	
+        	Bana bana = new Bana("", "", "", "");
+        	boolean okClicked  = mainUi.showBanaEditDialog(bana);
+        	
+        	selectedPerson.addBana(new ArrayList<Bana>() {{
+        	    add(bana);
+        	}});
+        	
+            //boolean okClicked = mainUi.showPersonEditDialog(selectedPerson);
+            if (okClicked) {
+                visaLoppDetails(selectedPerson);
+            }
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(mainUi.getPrimaryStage());
+            alert.setTitle("Inget markerat");
+            alert.setHeaderText("Inget lopp är markerat");
+            alert.setContentText("Vänligen markera ett lopp.");
+
+            alert.showAndWait();
+        }
+        
+        
+//        Bana selectedBana = banaTable.getSelectionModel().getSelectedItem();
+//        if (selectedBana != null) {
+//        	System.out.println("selected person = " + selectedBana);
+//            boolean okClicked = mainUi.showBanaEditDialog(selectedBana);
+////            if (okClicked) {
+////                visaLoppDetails(selectedBana);
+////            }
+//
+//        } else {
+//            // Nothing selected.
+//        	Alert alert = new Alert(AlertType.WARNING);
+//          alert.initOwner(mainUi.getPrimaryStage());
+//          alert.setTitle("Ingen markerad");
+//          alert.setHeaderText("Ingen bana är markerad");
+//          alert.setContentText("Vänligen markera en banan.");
+//
+//          alert.showAndWait();
+//        }
     }
     
     private void görTabellernaEditerBara(){
