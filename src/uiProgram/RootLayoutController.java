@@ -133,7 +133,7 @@ public class RootLayoutController {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Lopp App");
         alert.setHeaderText("About");
-        alert.setContentText("Skapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!");
+        alert.setContentText("Skapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!");
 
         alert.showAndWait();
     }

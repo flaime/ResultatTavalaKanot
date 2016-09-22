@@ -66,11 +66,11 @@
                               <Label fx:id="datumLable" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                            </children>
                         </GridPane>
-                        <ButtonBar layoutX="138.0" layoutY="244.0" prefHeight="40.0" prefWidth="500.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
+                        <ButtonBar layoutX="138.0" layoutY="244.0" prefHeight="40.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
                           <buttons>
-                            <Button mnemonicParsing="false" onAction="#handleNewPerson" text="Ny" />
-                              <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Editera" />
-                              <Button mnemonicParsing="false" onAction="#handleDeleteLopp" text="Radera" />
+                            <Button mnemonicParsing="false" onAction="#handleNewPerson" text="Ntt lopp" />
+                              <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Editera loppadata" />
+                              <Button mnemonicParsing="false" onAction="#handleDeleteLopp" text="Radera loppet" />
                               <Button mnemonicParsing="false" onAction="#visaDetaljer" text="Visa detaljer" />
                           </buttons>
                         </ButtonBar>
