@@ -3,7 +3,6 @@ package uiProgram;
 import java.util.ArrayList;
 import java.util.Optional;
 
-//import edu.emory.mathcs.backport.java.util.Arrays;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;

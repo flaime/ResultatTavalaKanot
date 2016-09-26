@@ -5,23 +5,9 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ParseResultatPDF {
+import tester.PDFManager;
 
-	public static void main(String [] args){
-		PDFManager pdfManager = new PDFManager();
-		pdfManager.setFilePath("C:\\besattningsregattan-2016.pdf");
-		try {
-			String textPdf = pdfManager.ToText();
-			System.out.println(textPdf);
-			ParseResultatPDF p = new ParseResultatPDF();
-			p.parasa(textPdf);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
-	
-	
+public class ParseResultatPDF {
 	
 	public void parasa(String text){
 		letaReapåAllaLopp(text);

@@ -7,13 +7,13 @@ package tester;
 
 
 import java.util.List;
-import retrofit2.Call;
-import retrofit2.Callback;
-//import retrofit2.GsonConverterFactory; //denna komenterade jag bort då den klagade
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
+//komentrade bort pga att jag togg bort biblotek som den kräver men som inte används av själva programet 
+//import retrofit2.Call;
+//import retrofit2.Callback;
+//import retrofit2.Response;
+//import retrofit2.Retrofit;
+//import retrofit2.http.GET;
+//import retrofit2.http.Path;
 
 public class RestApi {
 	
