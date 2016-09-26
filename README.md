@@ -30,11 +30,11 @@ Lättast är att ladda ner senaste versionen som jag sett till att bygga samman 
 Annars för abolut senaste fixarna trixarna osv så får man bygga själv detta är ett **eclips** prodjekt så kör in det där så ska det vara körbart på en gång. Jag ser till att inte puscha saker som gör att något går sönder (i alla fall inte som jag märker) och inte i alla fall till master branchen :)
 
 ## Hjälpa till
-Om du kan och vill så får du hämst gärna hjälp till hör av dig eller ta och puscha något vet ja!
+Om du kan och vill så får du hämst gärna hjälp till hör av dig eller ta och puscha något vet ja! :smiley:
 
 
 ##Onödig statestik
-Hittade en liten rolig sak för att beräkna antal rader kod inte den bästa räkninge och säger väll inte så mycket men kan vara lite rolig:
+Hittade en liten rolig sak för att beräkna antal rader kod inte den bästa räkninge och säger väll inte så mycket men kan vara lite rolig: verkar dock inte funka så får rycka... :( 
 
 <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
 <script>
