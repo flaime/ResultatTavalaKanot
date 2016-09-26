@@ -133,7 +133,7 @@ public class RootLayoutController {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Lopp App");
         alert.setHeaderText("About");
-        alert.setContentText("Skapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!");
+        alert.setContentText("Skapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\n\nDetta program är skrivet av mig men andvänder sig av bibloteket PDF Clown som täcksa av LGPL licens. Man kan hitta en version PDF Clown på http://www.pdfclown.org samt licensen kan fås genom https://www.gnu.org/licenses/lgpl-3.0.en.html");
 
         alert.showAndWait();
     }
