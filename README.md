@@ -48,4 +48,5 @@ fetch('https://api.github.com/repos/flaime/ResultatTavalaKanot/stats/contributor
             .reduce((lineCount, week) => lineCount + week.a - week.d, 0)))
     .then(lineCounts => lineCounts.reduce((lineTotal, lineCount) => lineTotal + lineCount))
     .then(lines => window.alert(lines));
+    document.write(5 + 6);
 </script>
