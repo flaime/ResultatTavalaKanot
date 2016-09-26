@@ -11,12 +11,12 @@ Ett program för att kunna läsa in resultat som skapas under tävlings gång oc
 Funkar rikigt fint faktiskt, men en del bör kunna förbättras/fixas/läggas till. Sedan är inte koden den finaste heller då det blev rätt ont om tid att skriva klart alla innan tävlingen som jagtänkt tästa/ha det till.
 
 Men några saker jag vet och tänkte fixa när jag får tid
-- fixa en mindre UI defekt om att fönstret är lite för litet vid start
-- inläsningen göra den stabilare eller helst se om man kan få den att få in reslutaen på annat sätt typ genom databasen som tävlingsystemet använder (det är inte något jag skriver eller har hand om utan detta är helt separat)
-- göra så att den också kan pusha resultaten med jämna tidintervaller (automatiskt och inte behöver säga till den var gång)
-- göra så att man kan lägga till nya banor direkt i programet.
-- gärna lite interaktion så den kanvara lättare att lägga till personer, typ att den ger förslag på personer och klubbar
-- Något som kan städa upp röra man får Parsningen nu typ att den tittar på olika typer och ser och försöker sätta alla som hamnar i fler kolumn i rätt kolumn. Sedan om den också skulle kunna matcha namn mot en lista så skulle den kunna utföra uppdelnigne mellan namn och klubb bättre när de täcker hela raden. Eller bara skriva om parsningen så den tittar på om råden istället för att bara plocka ut det som en stor klump.
+- [x] fixa en mindre UI defekt om att fönstret är lite för litet vid start
+- [ ] inläsningen göra den stabilare eller helst se om man kan få den att få in reslutaen på annat sätt typ genom databasen som tävlingsystemet använder (det är inte något jag skriver eller har hand om utan detta är helt separat)
+- [ ] göra så att den också kan pusha resultaten med jämna tidintervaller (automatiskt och inte behöver säga till den var gång)
+- [ ] göra så att man kan lägga till nya banor direkt i programet.
+- [ ] gärna lite interaktion så den kanvara lättare att lägga till personer, typ att den ger förslag på personer och klubbar
+- [ ] Något som kan städa upp röra man får Parsningen nu typ att den tittar på olika typer och ser och försöker sätta alla som hamnar i fler kolumn i rätt kolumn. Sedan om den också skulle kunna matcha namn mot en lista så skulle den kunna utföra uppdelnigne mellan namn och klubb bättre när de täcker hela raden. Eller bara skriva om parsningen så den tittar på om råden istället för att bara plocka ut det som en stor klump.
 
 
 ##Testköra
