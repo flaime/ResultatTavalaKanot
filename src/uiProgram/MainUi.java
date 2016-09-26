@@ -30,7 +30,7 @@ public class MainUi extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 
-		this.primaryStage.setTitle("AddressApp");
+		this.primaryStage.setTitle("Reusultat Tävling Kanot");
 
 		initRootLayout();
 
