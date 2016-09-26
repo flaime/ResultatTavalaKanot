@@ -31,3 +31,21 @@ Annars för abolut senaste fixarna trixarna osv så får man bygga själv detta 
 
 ## Hjälpa till
 Om du kan och vill så får du hämst gärna hjälp till hör av dig eller ta och puscha något vet ja!
+
+
+##Onödig statestik
+Hittade en liten rolig sak för att beräkna antal rader kod inte den bästa räkninge och säger väll inte så mycket men kan vara lite rolig:
+
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script>
+'use strict';
+//replace jquery/jquery with the repo you're interested in
+//https://api.github.com/flaime/ResultatTavalaKanot/stats/contributors
+fetch('https://api.github.com/repos/flaime/ResultatTavalaKanot/stats/contributors') //https://api.github.com/repos/jquery/jquery/stats/contributors')
+    .then(response => response.json())
+    .then(contributors => contributors
+        .map(contributor => contributor.weeks
+            .reduce((lineCount, week) => lineCount + week.a - week.d, 0)))
+    .then(lineCounts => lineCounts.reduce((lineTotal, lineCount) => lineTotal + lineCount))
+    .then(lines => window.alert(lines));
+</script>
