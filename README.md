@@ -22,7 +22,7 @@ Men några saker jag vet och tänkte fixa när jag får tid
 ##Testköra
 Programet är designat för att läsa in resulat PDF:er som kommer ur kanottävlingssytem (ERTornamnet) producerar ([se dem här](https://github.com/flaime/ResultatTavalaKanot/tree/master/PDFer%20att%20testa%20med)). Men hoppas kunna bredda det till bättre för att parasa PDF:er som jag gjort är inte hundra... 
 
-Anvädner också en hel del separata biblotek ca 5 håller inte rikgit koll då jag bytt ut/testat några olika som ligger kvar. Men ja det kan vara en sak till att resna upp bland dem också och skaffa ett bättre byggsystem istället för alla lösa Jar filer som det är nu. Ge gärna förslag för har aldrig varit riktigt kompis med något byggsystem.
+Det finns ett separat biblotek **PDF Clown** som täcks av LGPL, koden till PDF Clown kan hittas på [http://www.pdfclown.org](http://www.pdfclown.org). Detta biblotek används för att kunna läsa av PDF:erna innan de parsars. Under tidiga skeden har jag testat ca 5 olika innn jag bestämde mig för PDF Clown, finns en del testkod för dem som ligger kvar. Då PDF Clown inte finns till Maven eller dylikt så är en jar fil som länkar samman det, så testa att ändra sökvägen om prodjektet inte funkar för dig. Skulle gärna rensa upp mer kanse skaffa ett bygsystem kom gärna med förslag!
 
 ##Hur man går tillväga för att köra
 Lättast är att ladda ner senaste versionen som jag sett till att bygga samman och laddat upp i form av en Jar fil. Som går att hitta under **release**.  [direktlänk här]( https://github.com/flaime/ResultatTavalaKanot/releases)
