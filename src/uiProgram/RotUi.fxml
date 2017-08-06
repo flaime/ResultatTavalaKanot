@@ -24,6 +24,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#HandelPushaFonster" text="Pusha inställningar" />
                   <MenuItem mnemonicParsing="false" onAction="#HandelläsInInställning" text="Läs in/inställningar" />
                   <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="Om" />
+                  <MenuItem mnemonicParsing="false" onAction="#handelDatabas" text="Read from databas" />
             </items>
           </Menu>
         </menus>
