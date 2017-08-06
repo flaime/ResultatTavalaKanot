@@ -29,6 +29,11 @@ public class RootLayoutController {
         this.mainUi = mainUi;
     }
     
+    @FXML
+    private void handelDatabas(){
+    	mainUi.showInsDatabasDialog();
+    }
+    
     /**
      * @author ahlin
      */

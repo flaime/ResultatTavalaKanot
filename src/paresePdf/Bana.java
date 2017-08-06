@@ -1,5 +1,8 @@
 package paresePdf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -10,6 +13,8 @@ public class Bana {
 	private final StringProperty bana = new SimpleStringProperty("non");
 	private final StringProperty tid = new SimpleStringProperty("non");
 	
+	private final List<Person> persons = new ArrayList<>();
+	
 	public Bana(String namn, String klubb, String bana, String tid) {
 		this.namn.set(namn);
 		this.klubb.set(klubb);
@@ -18,6 +23,35 @@ public class Bana {
 	}
 	
 	
+	public Bana(List<Person> persons, String bana, String tid) {
+		this.persons.addAll(persons);
+		this.namn.set(nameConcat());
+		this.klubb.set(ClubbConcat());
+		this.bana.set(bana);
+		this.tid.set(tid);
+	}
+	private String nameConcat(){
+		String concatNames ="";
+		for(int i =0; i< persons.size(); i++){
+			if(0 == i)
+				concatNames += persons.get(i).getForName() + " " + persons.get(i).getSureName();
+			else
+				concatNames += "/" + persons.get(i).getForName() + " " + persons.get(i).getSureName();
+		}
+			return concatNames;
+	}
+	
+	private String ClubbConcat(){
+		String concatNames ="";
+		for(int i =0; i< persons.size(); i++){
+			if(0 == i)
+				concatNames += persons.get(i).getKlub();
+			else
+				concatNames += "/" + persons.get(i).getKlub();
+		}
+			return concatNames;
+	}
+
 	@Override
 	public String toString() {
 		return namn.get() + "\t" +  klubb.get() + "\t" + bana.get() + "\t" + tid.get();

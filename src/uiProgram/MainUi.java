@@ -218,7 +218,7 @@ public class MainUi extends Application {
 	 *            the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	private Stage dialogStage = new Stage();
+//	private Stage dialogStage = new Stage();
 	private Stage stage = new Stage();
 	private boolean visatInfoTidigare = false;
 
@@ -234,8 +234,8 @@ public class MainUi extends Application {
 				//
 				Scene scene = new Scene(page);
 
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoadPDFUi.fxml"));
-				Parent root1 = (Parent) fxmlLoader.load();
+//				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoadPDFUi.fxml"));
+//				Parent root1 = (Parent) fxmlLoader.load();
 				stage.setTitle("Läsa in Filer");
 				stage.setScene(scene);// new Scene(root1
 				stage.show();
@@ -255,6 +255,56 @@ public class MainUi extends Application {
 
 			} else if (visatInfoTidigare == true) {
 				stage.show();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Öppnar en dialog med inställningar med inläsning av filer från en databas
+	 * säta på automatisk inläsning.
+	 * 
+	 * @param person
+	 *            the person object to be edited
+	 * @return true if the user clicked OK, false otherwise.
+	 */
+//	private Stage dialogStage = new Stage();
+	private Stage databaSstage = new Stage();
+	private boolean visatDatabasInfoTidigare = false;
+
+	public void showInsDatabasDialog() { // var boolean förut
+		try {
+			if (visatDatabasInfoTidigare == false) {
+
+				// // Load the fxml file and create a new stage for the popup
+				// dialog.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(MainUi.class.getResource("LoadDatabasUi.fxml"));
+				AnchorPane page = (AnchorPane) loader.load();
+				//
+				Scene scene = new Scene(page);
+
+				databaSstage.setTitle("Läsa in Filer");
+				databaSstage.setScene(scene);// new Scene(root1
+				databaSstage.show();
+				scene.getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+					@Override
+					public void handle(WindowEvent event) {
+//						System.out.println("nu ska den inte stängas tack");
+						event.consume();
+						databaSstage.hide();
+						visatInfoTidigare = true;
+					}
+				});
+
+				DatabasLoderController controller = loader.getController();
+				controller.setMainUi(this);
+
+			} else if (visatInfoTidigare == true) {
+				databaSstage.show();
 			}
 
 		} catch (IOException e) {
@@ -380,5 +430,6 @@ public class MainUi extends Application {
 			return false;
 		}
 	}
+
 
 }
