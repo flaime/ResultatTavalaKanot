@@ -10,8 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import testarF�rUi.Person;
-import testarF�rUi.PersonOverviewController;
+import testarFörUi.Person;
+import testarFörUi.PersonOverviewController;
 
 public class MainApp extends Application {
 
