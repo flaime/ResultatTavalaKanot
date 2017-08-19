@@ -37,12 +37,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <RadioButton fx:id="replace" mnemonicParsing="false" selected="true" text="Replace">
+                  <RadioButton fx:id="replace" mnemonicParsing="false" onAction="#replaceRadioButtonPressed" selected="true" text="Replace">
                      <toggleGroup>
                         <ToggleGroup fx:id="reloadOrSkip" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="skipp" mnemonicParsing="false" text="skip" toggleGroup="$reloadOrSkip">
+                  <RadioButton fx:id="skipp" mnemonicParsing="false" onAction="#skippRadioButtonPressed" text="skip" toggleGroup="$reloadOrSkip">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -65,7 +65,7 @@
             <HBox alignment="CENTER_RIGHT">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Automatisk reload" />
-                    <ToggleButton fx:id="of" selected="true">
+                    <ToggleButton fx:id="of" disable="true" onAction="#autoLoadPdfOf" selected="true">
                      <graphic>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Of" />
                      </graphic>
@@ -73,7 +73,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                     </ToggleButton>
-                    <ToggleButton fx:id="on">
+                    <ToggleButton fx:id="on" disable="true" onAction="#autoLoadPdfOn">
                      <graphic>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="On" />
                      </graphic>
@@ -86,7 +86,7 @@
             <HBox alignment="CENTER_RIGHT">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reload intervall:" />
-                  <TextField editable="false" prefWidth="45.0" text="10">
+                  <TextField editable="false" prefWidth="45.0" text="4">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -109,7 +109,7 @@
             <HBox alignment="CENTER_LEFT">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="statusen ska stå här">
+                  <Text fx:id="databasInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

@@ -36,6 +36,13 @@ public class ParseDatabasToTävling {
 	
 	private Tävling Tävling = null;
 	private DatabasClass db;
+	private LoadDatabasInformation logToOjekt = null;
+	public ParseDatabasToTävling(String databasURL, LoadDatabasInformation logToOjekt) throws IllegalArgumentException{
+		this(databasURL);
+		this.logToOjekt = logToOjekt;
+		log("Database connection has been esatabilitch");
+		
+	}
 	public ParseDatabasToTävling(String databasURL) throws IllegalArgumentException{
 		
 		Tävling Tävling = null;
@@ -45,12 +52,19 @@ public class ParseDatabasToTävling {
 			e.printStackTrace();
 			throw new IllegalArgumentException("Databas conncetion could not set or not found or wrong type");
 		}
+		
+		
+	}
+	
+	private void log(String message){
+		if(logToOjekt != null)
+			logToOjekt.addDatabasLoadInfo(message);
 	}
 		
 	public Tävling parserDatbas(){
 		//create and set day string of all the days
 		Tävling = createCompetitionWhitDaysSet();
-		
+		log("Loading  and parsing competition  databas");
 		
 		//load alla the lop:s and (start and finiced lopps)
 		try {
@@ -84,7 +98,7 @@ public class ParseDatabasToTävling {
 			e.printStackTrace();
 			throw new IllegalArgumentException("Wrong whit the lopp");
 		}
-		
+		log("Comeptition has ben loaded.");
 		System.out.println("Tävling = " + Tävling.getJsonString());
 		System.out.println("Tävling = " + Tävling);
 		
