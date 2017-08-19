@@ -11,26 +11,26 @@ Ett program för att kunna läsa in resultat som skapas under tävlings gång oc
 Funkar rikigt fint faktiskt, men en del bör kunna förbättras/fixas/läggas till. Sedan är inte koden den finaste heller då det blev rätt ont om tid att skriva klart alla innan tävlingen som jagtänkt tästa/ha det till.
 
 Men några saker jag vet och tänkte fixa när jag får tid
-- [ ] Kuna läsa in direkt från databas - påbörjat
-- [ ] gör om till ett maven prodjekt (separata jarfiler känns lite si-sådär)
+- [x] Kuna läsa in direkt från databas
+- [x] gör om till ett maven prodjekt (separata jarfiler känns lite si-sådär)
 - [ ] Fixa en kalender vy som man kan visa när på dagen loppen går (är i stort klart men i separat prodjekt för själva vyn, bör snart komma upp på git) så att implementera den i prodjektet.
 - [x] fixa en mindre UI defekt om att fönstret är lite för litet vid start
-- [ ] inläsningen göra den stabilare eller helst se om man kan få den att få in reslutaen på annat sätt typ genom databasen som tävlingsystemet använder (det är inte något jag skriver eller har hand om utan detta är helt separat)
+- [x] inläsningen göra den stabilare eller helst se om man kan få den att få in reslutaen på annat sätt typ genom databasen som tävlingsystemet använder (det är inte något jag skriver eller har hand om utan detta är helt separat)
 - [ ] göra så att den också kan pusha resultaten med jämna tidintervaller (automatiskt och inte behöver säga till den var gång)
 - [ ] göra så att man kan lägga till nya banor direkt i programet.
 - [ ] gärna lite interaktion så den kanvara lättare att lägga till personer, typ att den ger förslag på personer och klubbar
-- [ ] Något som kan städa upp röra man får Parsningen nu typ att den tittar på olika typer och ser och försöker sätta alla som hamnar i fler kolumn i rätt kolumn. Sedan om den också skulle kunna matcha namn mot en lista så skulle den kunna utföra uppdelnigne mellan namn och klubb bättre när de täcker hela raden. Eller bara skriva om parsningen så den tittar på om råden istället för att bara plocka ut det som en stor klump.
+- [ ] Något som kan städa upp röra med PDF inläsing man får Parsningen nu typ att den tittar på olika typer och ser och försöker sätta alla som hamnar i fler kolumn i rätt kolumn. Sedan om den också skulle kunna matcha namn mot en lista så skulle den kunna utföra uppdelnigne mellan namn och klubb bättre när de täcker hela raden. Eller bara skriva om parsningen så den tittar på om råden istället för att bara plocka ut det som en stor klump.
 
 
 ##Testköra
-Programet är designat för att läsa in resulat PDF:er som kommer ur kanottävlingssytem (ERTornamnet) producerar ([se dem här](https://github.com/flaime/ResultatTavalaKanot/tree/master/PDFer%20att%20testa%20med)). Men hoppas kunna bredda det till bättre för att parasa PDF:er som jag gjort är inte hundra... 
+Programet är designat för att läsa in resulat PDF:er eller direkt från tävlingsdatabasen som kommer ur kanottävlingssytem (ERTornamnet) producerar ([se dem här](https://github.com/flaime/ResultatTavalaKanot/tree/master/PDFer%20att%20testa%20med)). Men hoppas kunna bredda det till bättre för att parasa PDF:er som jag gjort är inte hundra... 
 
 Det finns ett separat biblotek **PDF Clown** som täcks av LGPL, koden till PDF Clown kan hittas på [http://www.pdfclown.org](http://www.pdfclown.org). Detta biblotek används för att kunna läsa av PDF:erna innan de parsars. Under tidiga skeden har jag testat ca 5 olika innn jag bestämde mig för PDF Clown, finns en del testkod för dem som ligger kvar. Då PDF Clown inte finns till Maven eller dylikt så är en jar fil som länkar samman det, så testa att ändra sökvägen om prodjektet inte funkar för dig. Skulle gärna rensa upp mer kanse skaffa ett bygsystem kom gärna med förslag!
 
 ##Hur man går tillväga för att köra
 Lättast är att ladda ner senaste versionen som jag sett till att bygga samman och laddat upp i form av en Jar fil. Som går att hitta under **release**.  [direktlänk här]( https://github.com/flaime/ResultatTavalaKanot/releases)
 
-Annars för abolut senaste fixarna trixarna osv så får man bygga själv detta är ett **eclips** prodjekt så kör in det där så ska det vara körbart på en gång. Jag ser till att inte puscha saker som gör att något går sönder (i alla fall inte som jag märker) och inte i alla fall till master branchen :)
+Annars för abolut senaste fixarna trixarna osv så får man bygga själv detta är ett **eclips/maven** prodjekt så kör in det där så ska det vara körbart på en gång. Jag ser till att inte puscha saker som gör att något går sönder (i alla fall inte som jag märker) och inte i alla fall till master branchen :)
 
 ## Hjälpa till
 Om du kan och vill så får du hämst gärna hjälp till hör av dig eller ta och puscha något vet ja! :smiley:
