@@ -161,21 +161,21 @@ public class Lopp {
 
 	public String getJson() {
 		String json = "{";
-		json += transformTillVärde("Datum", Datum.getValue());
+		json += transformTillVärde("date", Datum.getValue());
 		json += ",";
-		json += transformTillVärde("distans", distans.getValue());
+		json += transformTillVärde("distance", distans.getValue());
 		json += ",";
-		json += transformTillVärde("tid", tid.getValue());
+		json += transformTillVärde("time", tid.getValue());
 		json += ",";
-		json += transformTillVärde("klass", klass.getValue());
+		json += transformTillVärde("raceClass", klass.getValue());
 		json += ",";
-		json += transformTillVärde("typ", typ.getValue());
+		json += transformTillVärde("type", typ.getValue());
 		json += ",";
-		json += transformTillVärde("typNummer", typNummerString.getValue());
+		json += transformTillVärde("typeNumber", typNummerString.getValue());
 		json += ",";
-		json += transformTillVärde("loppNummer", loppNummerString.getValue());
+		json += transformTillVärde("raceNummer", loppNummerString.getValue());
 		
-		json += ",\"banorna\":[";
+		json += ",\"tracks\":[";
 		//banor
 		for(int i=0; i < banorna.size(); i++)
 		{

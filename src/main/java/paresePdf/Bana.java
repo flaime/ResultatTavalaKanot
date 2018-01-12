@@ -62,14 +62,28 @@ public class Bana {
 
 	public String getJson() {
 		String json = "{";
-		json += transformTillVärde("namn", namn.getValue());
+		json += "\"licensNumber\":null";
 		json += ",";
-		json += transformTillVärde("klubb", klubb.getValue());
+		json += transformTillVärde("name", namn.getValue());
 		json += ",";
-		json += transformTillVärde("bana", bana.getValue());
+		json += transformTillVärde("clubb", klubb.getValue());
 		json += ",";
-		json += transformTillVärde("tid", tid.getValue());
+		json += transformTillVärde("trackNumber", bana.getValue());
+		json += ",";
+		json += transformTillVärde("time", tid.getValue());
+		json += ",";
+		json += "\"persons\":[";
+		for(int i=0; i < persons.size(); i++)
+		{
+//		    Console.Write(A[i]);
+			json += persons.get(i).getJson();
+		    if (i != persons.size()-1)
+		    	json += ",";
+//		        Console.Write(",");
+		}
+		json += "]";
 		json += "}";
+		//persons
 		return json;
 	}
 	private String transformTillVärde(String namn , String värde){

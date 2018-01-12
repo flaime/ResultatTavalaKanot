@@ -66,7 +66,31 @@ public class Person {
 	public void setKlub(String klub) {
 		this.klub = klub;
 	}
-	
-	
-	
+
+/*	private String forName;
+	private String sureName;
+	private String sex;
+	private String yearOfBirth;
+	private String licensNumber;
+	private String klub;
+	*/
+	public String getJson() {
+		String json = "{";
+		json += transformTillVärde("forName", forName);
+		json += ",";
+		json += transformTillVärde("sureName", sureName);
+		json += ",";
+		json += transformTillVärde("sex", sex);
+		json += ",";
+		json += transformTillVärde("yearOfBirth", yearOfBirth);
+		json += ",";
+		json += transformTillVärde("licensNumber", licensNumber);
+		json += ",";
+		json += transformTillVärde("club", klub);
+		json += "}";
+		return json;
+	}
+	private String transformTillVärde(String namn , String värde){
+		return "\""+namn+"\":\""+värde+"\"";
+	}
 }
