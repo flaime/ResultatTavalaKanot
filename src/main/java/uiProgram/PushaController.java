@@ -27,6 +27,9 @@ public class PushaController {
     
     @FXML
     private TextField attTaBort;
+    
+    @FXML
+    private TextField competitionName;
 
 
 
@@ -53,7 +56,7 @@ public class PushaController {
     @FXML
     private void handelPusha(){
     	try {
-			sendPostTävling(serverSokvag.getText(), mainUi.getTävlingJson());
+			sendPostTävling(serverSokvag.getText(), mainUi.getTävlingJson(), competitionName.getText());
 		} catch (Exception e) {
 			PushInfo.appendText("Gick inte att pusha prova ändra sökvögen eller likander lycka till ");
 			e.printStackTrace();
@@ -63,9 +66,9 @@ public class PushaController {
     
     
  // HTTP POST request
- 		private void sendPostTävling(String strURL, String jsonTävling) throws Exception {
+ 		private void sendPostTävling(String strURL, String jsonTävling, String  competitionName) throws Exception {
 
- 			strURL += "/api/values/";//"http://localhost:6423/api/values/";
+ 			strURL += "/api/" + competitionName;//"http://localhost:6423/api/values/";
  			String postData = "x=val1&y=val2";
  			URL url = new URL(strURL);
  			HttpURLConnection conn = (HttpURLConnection) url.openConnection();

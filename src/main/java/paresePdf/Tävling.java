@@ -93,9 +93,11 @@ public class Tävling {
 	
 	public String getJsonString(){
 		String json = "{";
-		json += "\"datum\":";
+		json += "\"date\":";
 		json += "\"" +getDatum() + "\",";
-		json += "\"loppena\":[";
+		json += "\"name\":";
+		json += "null,";
+		json += "\"races\":[";
 		
 		for(int i=0; i < getLopp().size(); i++)
 		{
