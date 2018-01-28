@@ -25,7 +25,7 @@
             <HBox prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Server sökväg" />
-                  <TextField fx:id="serverSokvag" prefWidth="360.0" text="http://localhost:6423" />
+                  <TextField fx:id="serverSokvag" prefWidth="360.0" text="http://localhost:8080" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" top="10.0" />
