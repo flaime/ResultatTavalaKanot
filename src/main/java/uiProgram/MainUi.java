@@ -37,7 +37,7 @@ public class MainUi extends Application {
 		showPersonOverview();
 	}
 
-	// loader.setLocation(MainUi.class.getResource("RotUi.fxml"));
+	// loader.setLocation(MainUi.class.getResource("/RotUi.fxml"));
 
 	// /**
 	// * Initializes the root layout.
@@ -47,7 +47,7 @@ public class MainUi extends Application {
 	//
 	// // Load root layout from fxml file.
 	// FXMLLoader loader = new FXMLLoader();
-	// loader.setLocation(MainUi.class.getResource("RotUi.fxml"));
+	// loader.setLocation(MainUi.class.getResource("/RotUi.fxml"));
 	// rootLayout = (BorderPane) loader.load();
 	//
 	// // Show the scene containing the root layout.
@@ -67,7 +67,7 @@ public class MainUi extends Application {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainUi.class.getResource("RotUi.fxml"));
+			loader.setLocation(MainUi.class.getResource("/RotUi.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the root layout.
@@ -100,7 +100,7 @@ public class MainUi extends Application {
 			// Load person overview.
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainUi.class.getResource("LoppVisaren.fxml"));
+			loader.setLocation(MainUi.class.getResource("/LoppVisaren.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 
 			// Set person overview into the center of root layout.
@@ -152,7 +152,7 @@ public class MainUi extends Application {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainUi.class.getResource("LoppEditDialog.fxml"));
+			loader.setLocation(MainUi.class.getResource("/LoppEditDialog.fxml"));
 			System.out.println("Det kommer inte ett till");
 			AnchorPane page = (AnchorPane) loader.load();
 			System.out.println("ett till då?");
@@ -184,7 +184,7 @@ public class MainUi extends Application {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainUi.class.getResource("LoadPDFUi.fxml"));
+			loader.setLocation(MainUi.class.getResource("/LoadPDFUi.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 
 			// Create the dialog Stage.
@@ -229,7 +229,7 @@ public class MainUi extends Application {
 				// // Load the fxml file and create a new stage for the popup
 				// dialog.
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(MainUi.class.getResource("LoadPDFUi.fxml"));
+				loader.setLocation(MainUi.class.getResource("/LoadPDFUi.fxml"));
 				AnchorPane page = (AnchorPane) loader.load();
 				//
 				Scene scene = new Scene(page);
@@ -281,7 +281,7 @@ public class MainUi extends Application {
 				// // Load the fxml file and create a new stage for the popup
 				// dialog.
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(MainUi.class.getResource("LoadDatabasUi.fxml"));
+				loader.setLocation(MainUi.class.getResource("/LoadDatabasUi.fxml"));
 				AnchorPane page = (AnchorPane) loader.load();
 				//
 				Scene scene = new Scene(page);
@@ -321,7 +321,7 @@ public class MainUi extends Application {
 				// // Load the fxml file and create a new stage for the popup
 				// dialog.
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(MainUi.class.getResource("PushTillSIdaUi.fxml"));
+				loader.setLocation(MainUi.class.getResource("/PushTillSIdaUi.fxml"));
 				AnchorPane page = (AnchorPane) loader.load();
 				//
 				Scene scene = new Scene(page);
@@ -404,7 +404,7 @@ public class MainUi extends Application {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainUi.class.getResource("BanaEditDialog.fxml"));
+			loader.setLocation(MainUi.class.getResource("/BanaEditDialog.fxml"));
 
 			AnchorPane page = (AnchorPane) loader.load();
 
