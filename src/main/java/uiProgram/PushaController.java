@@ -46,17 +46,25 @@ public class PushaController {
     }
     @FXML
     private void startStopKnapp(){
-    	Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText("Finns ej");
-        alert.setContentText("Detta är inte än gjort så det funkar tyvär inte än automatiskt utan måste pushas manuelt :/ Här kommer lite info: \nSkapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\nJa eller om du vill vara med och fixa detta :) ");
+		showAlertInformation("Information", "Finns ej", "Detta är inte än gjort så det funkar tyvär inte än automatiskt utan måste pushas manuelt :/ Här kommer lite info: \nSkapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\nJa eller om du vill vara med och fixa detta :) ");
+	}
 
-        alert.showAndWait();
-    }
-    @FXML
+	private void showAlertInformation(String tittle, String header, String content) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(tittle);
+		alert.setHeaderText(header);
+		alert.setContentText(content);
+
+		alert.showAndWait();
+	}
+
+	@FXML
     private void handelPusha(){
     	try {
-			sendPostTävling(serverSokvag.getText(), mainUi.getTävlingJson(), competitionName.getText());
+    		if(competitionName.getText().isEmpty()){
+				showAlertInformation("Error", "\"Competition name\" måstet vara ifyllt.", "\"Competition name\" måstet vara ifyllt. Fyll i och försök igen.");
+			}else
+				sendPostTävling(serverSokvag.getText(), mainUi.getTävlingJson(), competitionName.getText());
 		} catch (Exception e) {
 			PushInfo.appendText("Gick inte att pusha prova ändra sökvögen eller likander lycka till ");
 			e.printStackTrace();
@@ -175,13 +183,8 @@ public class PushaController {
      */
     @FXML
     private void handleAbout() {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Lopp App");
-        alert.setHeaderText("About");
-        alert.setContentText("Detta är inte än gjort så det funkar tyvär inte än automatiskt utan måste pushas manuelt :/ Här kommer lite info: \nSkapad av:\nLinus Ahlin Hamberg\nFår frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\nJa eller om du vill vara med och fixa detta :) ");
-
-        alert.showAndWait();
-    }
+		showAlertInformation("Lopp App", "About", "Detta är inte än gjort så det funkar tyvär inte än automatiskt utan måste pushas manuelt :/ Här kommer lite info: \nSkapad av:\nLinus Ahlin Hamberg\nFår frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\nJa eller om du vill vara med och fixa detta :) ");
+	}
 
     /**
      * Closes the application.
