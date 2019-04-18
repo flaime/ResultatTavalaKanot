@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="750.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uiProgram.RootLayoutController">
+<BorderPane prefHeight="750.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uiProgram.RootLayoutController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -14,17 +14,16 @@
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
+            <Menu mnemonicParsing="false" text="Inställningar">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#HandelPushaFonster" text="Pusha inställningar" />
+                  <MenuItem mnemonicParsing="false" onAction="#handelDatabas" text="Läs från databas" />
+                  <MenuItem mnemonicParsing="false" onAction="#HandelläsInInställning" text="Läsa in från PDF (exeperimentiel)" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#HandelPushaFonster" text="Pusha inställningar" />
-                  <MenuItem mnemonicParsing="false" onAction="#HandelläsInInställning" text="Läs in/inställningar" />
                   <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="Om" />
-                  <MenuItem mnemonicParsing="false" onAction="#handelDatabas" text="Read from databas" />
             </items>
           </Menu>
         </menus>
