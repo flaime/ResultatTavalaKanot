@@ -39,8 +39,8 @@
                      <children>
                         <ButtonBar>
                           <buttons>
-                              <Button mnemonicParsing="false" onAction="#handleAbout" text="Starta/Stoppa" />
-                            <Button mnemonicParsing="false" onAction="#handelPusha" text="Pusha" />
+                              <Button fx:id="startStopPuschButton" mnemonicParsing="false" onAction="#startStopKnapp" text="Starta" />
+                            <Button fx:id="puschButton" mnemonicParsing="false" onAction="#handelPusha" text="Pusha" />
                           </buttons>
                            <HBox.margin>
                               <Insets bottom="10.0" top="10.0" />

@@ -5,12 +5,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 
 /**
@@ -31,10 +34,20 @@ public class PushaController {
     @FXML
     private TextField competitionName;
 
+    @FXML
+	private Button startStopPuschButton;
+
+	@FXML
+	private Button puschButton;
+
 
 
     // Reference to the main application
     private MainUi mainUi;
+
+    private ScheduledExecutorService executor;
+
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     /**
      * Is called by the main application to give a reference back to itself.
@@ -46,8 +59,37 @@ public class PushaController {
     }
     @FXML
     private void startStopKnapp(){
-		showAlertInformation("Information", "Finns ej", "Detta är inte än gjort så det funkar tyvär inte än automatiskt utan måste pushas manuelt :/ Här kommer lite info: \nSkapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\nJa eller om du vill vara med och fixa detta :) ");
-	}
+//		showAlertInformation("Information", "Finns ej", "Detta är inte än gjort så det funkar tyvär inte än automatiskt utan måste pushas manuelt :/ Här kommer lite info: \nSkapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\nJa eller om du vill vara med och fixa detta :) ");
+
+
+		Runnable puschRunnable = new Runnable() {
+			public void run() {
+				handelPusha();
+				PushInfo.appendText("Automatiskt puschat tävlingen (" + LocalDateTime.now().format(formatter) +") \n");
+				System.out.println("Hello world");
+			}
+		};
+
+		if(competitionName.getText().isEmpty()){
+			showAlertInformation("Error", "\"Competition name\" måstet vara ifyllt.", "\"Competition name\" måstet vara ifyllt. Fyll i och försök igen.");
+		}
+		else{
+
+			if(startStopPuschButton.getText().equalsIgnoreCase("Starta")) {
+				executor = Executors.newScheduledThreadPool(1);
+				executor.scheduleAtFixedRate(puschRunnable, 0, 10, TimeUnit.SECONDS);
+				startStopPuschButton.setText("Stop");
+				puschButton.setDisable(true);
+				PushInfo.appendText("Startar automatiskt push");
+			}else {
+				executor.shutdown();
+				startStopPuschButton.setText("Starta");
+				puschButton.setDisable(false);
+				PushInfo.appendText("Stoppar automatiskt push");
+			}
+		}
+
+    }
 
 	private void showAlertInformation(String tittle, String header, String content) {
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -76,7 +118,7 @@ public class PushaController {
  // HTTP POST request
  		private void sendPostTävling(String strURL, String jsonTävling, String  competitionName) throws Exception {
 
- 			strURL += "/api/competitions/" + competitionName;//"http://localhost:6423/api/values/";
+ 			strURL += "/api/competitions/" + URLEncoder.encode(competitionName,"UTF-8") ;//"http://localhost:6423/api/values/";
  			String postData = "x=val1&y=val2";
  			URL url = new URL(strURL);
  			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
