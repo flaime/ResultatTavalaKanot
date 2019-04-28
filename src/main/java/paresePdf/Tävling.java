@@ -1,12 +1,11 @@
 package paresePdf;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.*;
 
 import javax.xml.crypto.Data;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,6 +13,7 @@ public class Tävling {
 
 //	private ArrayList<Lopp> loppen = new ArrayList<>();
 	private ObservableList<Lopp> loppen = FXCollections.observableArrayList();
+	private List<Klubb> klubbarna = new ArrayList<>();
 	private String datum = "non";
 	public Tävling(String datum) {
 		this.datum = datum;
@@ -33,6 +33,8 @@ public class Tävling {
 		String ret = "";
 		for(Lopp l : loppen)
 			ret += l+"\n-------------------------------------------\n";
+
+		ret += klubbarna;
 		return ret;
 	}
 
@@ -107,10 +109,42 @@ public class Tävling {
 		    	json += ",";
 //		        Console.Write(",");
 		}
-		json += "]}";
+		json += "]";
+//		json += ",\"Clubs\":" + getClubJson();
+		json +="}";
 		
 		return json;
 		
 	}
-	
+
+	public String getClubJson() {
+		String klubbar ="";
+		try {
+			klubbar = new ObjectMapper().writeValueAsString(klubbarna);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			klubbar = "[]";
+		}
+		return klubbar;
+	}
+
+	public void addKlubb(Klubb klubb) {
+		klubbarna.add(klubb);
+	}
+
+	public void addKlubbarErsätt(List<Klubb> klubbarna) {
+		this.klubbarna = klubbarna;
+	}
+
+	public List<Klubb> getCLubs() {
+		return klubbarna;
+	}
+
+	public void addKlubbarHoppaÖver(List<Klubb> cLubs) { //TODO test this
+		cLubs.forEach(club -> {
+			if (klubbarna.stream().noneMatch(clubExisting -> clubExisting.getLicensNummer().equalsIgnoreCase(club.getLicensNummer()))) {
+				klubbarna.add(club);
+			}
+		});
+	}
 }

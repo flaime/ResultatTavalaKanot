@@ -76,95 +76,38 @@ public class JavaClientTest {
 	
 	
 	// HTTP POST request
-		private void sendPostTävling() throws Exception {
-
-			String strURL = "http://localhost:6423/api/values/";
-			String postData = "x=val1&y=val2";
-			URL url = new URL(strURL);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Content-Type","application/json"); 
-//			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-//			conn.setRequestProperty("Set-Cookie", sessionCookie);
-			conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.getBytes().length));
-
-			
-			conn.setUseCaches(false);
-			conn.setDoInput(true);
-			conn.setDoOutput(true);
-			
-			// How to add postData as http body?
-			String str =  "{\"datum\":\"kalaskuldatum\",\"loppena\":[{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:37\",\"klass\":\"H14\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"1\",\"banorna\":[]},{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:40\",\"klass\":\"H14\",\"typ\":\"försök\",\"typNummer\":\"2\",\"loppNummer\":\"2\",\"banorna\":[]},{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:41\",\"klass\":\"H16\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"3\",\"banorna\":[{\"namn\":\"Klas G�ran\",\"klubb\":\"närkets pk\",\"bana\":\"1\",\"tid\":\"12 min\"},{\"namn\":\"jonas lefson\",\"klubb\":\"närkets pk\",\"bana\":\"2\",\"tid\":\"9 min\"},{\"namn\":\"M�rten Frisk\",\"klubb\":\"Kalix paddelf�rening\",\"bana\":\"3\",\"tid\":\"12 min\"}]},{\"Datum\":\"12/4/2003\",\"distans\":\"1000m\",\"tid\":\"12:43\",\"klass\":\"D14\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"4\",\"banorna\":[]}]}";
-			byte[] outputInBytes = str.getBytes("UTF-8");
-			OutputStream os = conn.getOutputStream();
-			
-			os.write( outputInBytes );    
-			os.close();
-			
-			
-			int responseCode = conn.getResponseCode();
-			System.out.println("\nSending 'POST' request to URL : " + url);
-			System.out.println("Response Code : " + responseCode);
-			
-			
-			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-			String inputLine;
-			StringBuffer response = new StringBuffer();
-
-			while ((inputLine = in.readLine()) != null) {
-				response.append(inputLine);
-			}
-			in.close();
-
-			//print result
-			System.out.println(response.toString());
-
-
-			
-			
-//			String url = "http://localhost:6423/api/values/";
-//			
-//			URL obj = new URL(url);
-//			HttpURLConnection con = (HttpURLConnection) /*(HttpsURLConnection)*/ obj.openConnection();
+//		private void sendPostTävling() throws Exception {
 //
-//			//add reuqest header
-//			con.setRequestMethod("PUT");//"POST");
-//			con.setRequestProperty("User-Agent", USER_AGENT);
-//			con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-//			con.setRequestProperty("Content-Type","application/json");
-//			
-//			
-//			
-//			
-//			
-//			
-//			
-//			
+//			String strURL = "http://localhost:6423/api/values/";
+//			String postData = "x=val1&y=val2";
+//			URL url = new URL(strURL);
+//			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//			conn.setRequestMethod("POST");
+//			conn.setRequestProperty("Content-Type","application/json");
+////			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+////			conn.setRequestProperty("Set-Cookie", sessionCookie);
+//			conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.getBytes().length));
 //
-//			String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
 //
-//			// Send post request
-//			con.setDoOutput(true);
-////			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-////			wr.writeBytes(urlParameters);
-////			wr.flush();
-////			wr.close();
-//			
-//			String str =  "{\"x\": \"val1\",\"y\":\"val2\"}";
+//			conn.setUseCaches(false);
+//			conn.setDoInput(true);
+//			conn.setDoOutput(true);
+//
+//			// How to add postData as http body?
+//			String str =  "{\"datum\":\"kalaskuldatum\",\"loppena\":[{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:37\",\"klass\":\"H14\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"1\",\"banorna\":[]},{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:40\",\"klass\":\"H14\",\"typ\":\"försök\",\"typNummer\":\"2\",\"loppNummer\":\"2\",\"banorna\":[]},{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:41\",\"klass\":\"H16\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"3\",\"banorna\":[{\"namn\":\"Klas G�ran\",\"Klubb\":\"närkets pk\",\"bana\":\"1\",\"tid\":\"12 min\"},{\"namn\":\"jonas lefson\",\"Klubb\":\"närkets pk\",\"bana\":\"2\",\"tid\":\"9 min\"},{\"namn\":\"M�rten Frisk\",\"Klubb\":\"Kalix paddelf�rening\",\"bana\":\"3\",\"tid\":\"12 min\"}]},{\"Datum\":\"12/4/2003\",\"distans\":\"1000m\",\"tid\":\"12:43\",\"klass\":\"D14\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"4\",\"banorna\":[]}]}";
 //			byte[] outputInBytes = str.getBytes("UTF-8");
-//			OutputStream os = con.getOutputStream();
-//			os.write( outputInBytes );    
-//			os.close();
-//			
-//			
+//			OutputStream os = conn.getOutputStream();
 //
-//			int responseCode = con.getResponseCode();
+//			os.write( outputInBytes );
+//			os.close();
+//
+//
+//			int responseCode = conn.getResponseCode();
 //			System.out.println("\nSending 'POST' request to URL : " + url);
-//			System.out.println("Post parameters : " + urlParameters);
 //			System.out.println("Response Code : " + responseCode);
 //
-//			BufferedReader in = new BufferedReader(
-//			        new InputStreamReader(con.getInputStream()));
+//
+//			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 //			String inputLine;
 //			StringBuffer response = new StringBuffer();
 //
@@ -175,8 +118,8 @@ public class JavaClientTest {
 //
 //			//print result
 //			System.out.println(response.toString());
-
-		}
+//
+//		}
 
 	// HTTP GET request
 	private void sendGet() throws Exception {

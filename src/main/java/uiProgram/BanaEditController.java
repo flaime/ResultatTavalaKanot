@@ -104,7 +104,7 @@ public class BanaEditController {
             errorMessage += "No valid namn(en)!\n"; 
         }
         if (klubbLable.getText() == null || klubbLable.getText().length() == 0) {
-            errorMessage += "No valid klubb(ar)!\n"; 
+            errorMessage += "No valid Klubb(ar)!\n";
         }
         if (tidLable.getText() == null || tidLable.getText().length() == 0) {
             errorMessage += "No valid tid!\n"; 

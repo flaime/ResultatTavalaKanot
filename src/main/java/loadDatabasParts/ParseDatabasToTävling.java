@@ -12,12 +12,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
-import paresePdf.Bana;
-import paresePdf.Lopp;
-import paresePdf.Person;
-import paresePdf.Tävling;
+import paresePdf.*;
 
 //import linus.testMSaccessDatabasConection.test.MSaccessDatabas.Conection.Tävling.Bana;
 //import linus.testMSaccessDatabasConection.test.MSaccessDatabas.Conection.Tävling.Lopp;
@@ -66,14 +62,33 @@ public class ParseDatabasToTävling {
 		Tävling = createCompetitionWhitDaysSet();
 		log("Loading  and parsing competition  databas");
 		
-		//load alla the lop:s and (start and finiced lopps)
+
 		try {
+			//Ladda alla klubbar
+			ResultSet klubbar = db.query("SELECT * FROM Klubbar;");
+
+
+			while(klubbar.next()){
+				final String shortName = klubbar.getString("Klubb");
+				final String fullNamn = klubbar.getString("Förklaring");
+				final String displayName = klubbar.getString("Programnamn");
+				final String licensnr = klubbar.getString("Licensnr");
+
+				final Klubb klubb = new Klubb(shortName, fullNamn, displayName, licensnr);
+
+				Tävling.addKlubb(klubb);
+
+			}
+
+
+
+			//load alla the lop:s and (start and finiced lopps)
 			ResultSet StartOrResultat = db.query("SELECT * FROM [Start/Resultat];");
 			
 			Map<Integer, Lopp> lopp = new HashMap<>();
 			
 			while(StartOrResultat.next()){
-//				Bana bb = new Bana(StartOrResultat.getString("Licens1"), "clubb"/* StartOrResultat.getString("klubb")*/, StartOrResultat.getString("bana") , StartOrResultat.getString("tid"));
+//				Bana bb = new Bana(StartOrResultat.getString("Licens1"), "clubb"/* StartOrResultat.getString("Klubb")*/, StartOrResultat.getString("bana") , StartOrResultat.getString("tid"));
 				Bana b = null;
 				if(getPersons(StartOrResultat).size()>0)
 					b = new Bana(getPersons(StartOrResultat), StartOrResultat.getString("bana") , StartOrResultat.getString("tid"));
@@ -82,7 +97,7 @@ public class ParseDatabasToTävling {
 					//emty not yet placed do noting
 				}else if(lopp.containsKey(new Integer(StartOrResultat.getInt("lopp")) )&& b != null){
 //					List<Person> person = getPersons(StartOrResultat);
-//					Bana b = new Bana(namn, klubb, bana, tid) //TODO titta till så att detta med personer sköts bättre
+//					Bana b = new Bana(namn, Klubb, bana, tid) //TODO titta till så att detta med personer sköts bättre
 					lopp.get(StartOrResultat.getInt("lopp")).addBana(new ArrayList<Bana>( Arrays.asList(b)));// add(lop);
 					System.out.println(b);
 				}else if( b != null){

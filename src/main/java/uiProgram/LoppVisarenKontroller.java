@@ -241,7 +241,7 @@ public class LoppVisarenKontroller {
 								((Bana) t.getTableView().getItems().get(t.getTablePosition().getRow()))
 										.setKlubb(t.getNewValue());
 							} else {
-								if (villDuFortsättaÄvenOm("klubb", t.getNewValue())) {
+								if (villDuFortsättaÄvenOm("Klubb", t.getNewValue())) {
 									((Bana) t.getTableView().getItems().get(t.getTablePosition().getRow()))
 											.setKlubb(t.getNewValue());
 								} else {

@@ -118,7 +118,7 @@ public class ParseToObjekt {
 	private Placering ParsaToillPlacering(String placeringar){
 		
 		String[] plac = placeringar.split("(\\n|\\r)");
-		return new Placering(plac[0], plac[1],plac[2], plac[3]); //namn, klubb, placering, tid
+		return new Placering(plac[0], plac[1],plac[2], plac[3]); //namn, Klubb, placering, tid
 	}
 	
 	

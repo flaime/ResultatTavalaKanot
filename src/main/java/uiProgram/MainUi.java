@@ -363,6 +363,27 @@ public class MainUi extends Application {
 
 	}
 
+	public static void addKlubbarErsätt(Tävling tävling) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				t.addKlubbarErsätt(tävling.getCLubs());
+			}
+		});
+	}
+
+
+	public static void addKlubbarHoppaÖver(Tävling tävling) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				// customer.setF setFirstName(rs.getString("FirstName"));
+				// etc
+				t.addKlubbarHoppaÖver(tävling.getCLubs());
+			}
+		});
+	}
+
 	public static void addLoppErsätt(Tävling t2) {
 		// System.out.println("Är t null = " + (t == null));
 		Platform.runLater(new Runnable() {
@@ -390,6 +411,9 @@ public class MainUi extends Application {
 
 	public String getTävlingJson() {
 		return t.getJsonString();
+	}
+	public String getklubarJson() {
+		return t.getClubJson();
 	}
 
 	public boolean finnsLoppMedNummer(String loppnummer) {

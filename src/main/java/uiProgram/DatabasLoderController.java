@@ -100,10 +100,13 @@ private MainUi mainUi;
 		System.out.println("databas being loded");
 		Tävling t = pdb.parserDatbas();
 		
-		if(replace.isSelected())
+		if(replace.isSelected()) {
 			MainUi.addLoppErsätt(t);
-		else
+			MainUi.addKlubbarErsätt(t);
+		} else {
 			MainUi.addLoppHoppaÖver(t);
+			MainUi.addKlubbarHoppaÖver(t);
+		}
 	}
 	
 	
