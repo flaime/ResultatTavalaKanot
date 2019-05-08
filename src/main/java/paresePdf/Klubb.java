@@ -45,7 +45,7 @@ public class Klubb {
 	public void setDesplayNamn(String desplayNamn) {
 		this.desplayNamn = desplayNamn;
 	}
-	@JsonProperty("licenseNumber")
+	@JsonProperty("licensNumber")
 	public String getLicensNummer() {
 		return licensNummer;
 	}
