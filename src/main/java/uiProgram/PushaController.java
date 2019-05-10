@@ -13,10 +13,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.UnaryOperator;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+
+import javax.annotation.Resources;
 
 /**
  * @author ahlin
@@ -32,6 +37,9 @@ public class PushaController {
     
     @FXML
     private TextField attTaBort;
+
+    @FXML
+    private TextField pushSecMellan;
     
     @FXML
     private TextField competitionName;
@@ -42,6 +50,9 @@ public class PushaController {
 	@FXML
 	private Button puschButton;
 
+	@FXML
+	private Button taBortKnapp;
+
 
 
     // Reference to the main application
@@ -51,7 +62,32 @@ public class PushaController {
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    /**
+	@FXML
+	protected void initialize() {
+		UnaryOperator<TextFormatter.Change> filter = change -> {
+			String text = change.getText();
+
+			if (text.matches("[0-9]*")) {
+				return change;
+			}
+
+			return null;
+		};
+		TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+		pushSecMellan.setTextFormatter(textFormatter);
+
+		PushInfo.textProperty().addListener(new ChangeListener<Object>() {
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldValue,
+								Object newValue) {
+				PushInfo.setScrollTop(Double.MAX_VALUE); //this will scroll to the bottom
+				//use Double.MIN_VALUE to scroll to the top
+			}
+		});
+
+	}
+
+	/**
      * Is called by the main application to give a reference back to itself.
      * 
      * @param mainApp
@@ -79,14 +115,27 @@ public class PushaController {
 
 			if(startStopPuschButton.getText().equalsIgnoreCase("Starta")) {
 				executor = Executors.newScheduledThreadPool(1);
-				executor.scheduleAtFixedRate(puschRunnable, 0, 10, TimeUnit.SECONDS);
+				int seconds = Integer.parseInt(pushSecMellan.getText());
+				if(seconds == 0) {
+					seconds = 10;
+					pushSecMellan.setText("10");
+				}
+				pushSecMellan.setDisable(true);
+				executor.scheduleAtFixedRate(puschRunnable, 0, seconds, TimeUnit.SECONDS);
 				startStopPuschButton.setText("Stop");
 				puschButton.setDisable(true);
+				taBortKnapp.setDisable(true);
+				competitionName.setDisable(true);
+				serverSokvag.setDisable(true);
 				PushInfo.appendText("Startar automatiskt push");
 			}else {
 				executor.shutdown();
 				startStopPuschButton.setText("Starta");
 				puschButton.setDisable(false);
+				pushSecMellan.setDisable(false);
+				taBortKnapp.setDisable(false);
+				competitionName.setDisable(false);
+				serverSokvag.setDisable(false);
 				PushInfo.appendText("Stoppar automatiskt push");
 			}
 		}

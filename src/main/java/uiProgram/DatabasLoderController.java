@@ -1,17 +1,15 @@
 package uiProgram;
 
 import java.io.File;
+import java.util.function.UnaryOperator;
 
 import hjälpprogram.ReloadDatabasAutomatic;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 //import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import loadDatabasParts.LoadDatabasInformation;
 import loadDatabasParts.ParseDatabasToTävling;
@@ -35,6 +33,9 @@ private MainUi mainUi;
     Button readDatabas;
     @FXML
     TextField databasURL;
+
+    @FXML
+    TextField reloadIntervall;
     
     @FXML
     Text databasInfo;
@@ -55,7 +56,36 @@ private MainUi mainUi;
     private void initialize() {
 		on.setToggleGroup(onOfGrop);
 		of.setToggleGroup(onOfGrop);
+		UnaryOperator<TextFormatter.Change> filter = change -> {
+			String text = change.getText();
+
+			if (text.matches("[0-9]*")) {
+				return change;
+			}
+
+			return null;
+		};
+		TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+		reloadIntervall.setTextFormatter(textFormatter);
 	}
+
+//	@FXML
+//	protected void initialize() {
+//		UnaryOperator<TextFormatter.Change> filter = change -> {
+//			String text = change.getText();
+//
+//			if (text.matches("[0-9]*")) {
+//				return change;
+//			}
+//
+//			return null;
+//		};
+//		TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+//		pushSecMellan.setTextFormatter(textFormatter);
+//
+//
+//
+//	}
 	
 	/**
 	 * Handle datafilieShoser button
@@ -115,6 +145,12 @@ private MainUi mainUi;
 	public void autoLoadPdfOn(){
 		System.out.println("load");
 		readDatabas.setDisable(true);
+		int seconds = Integer.parseInt(reloadIntervall.getText());
+		if(seconds == 0){
+			seconds = 10;
+			reloadIntervall.setText("10");
+		}
+		rdb.setMilisecondsBetwenDataReading(seconds *1000);//transform to milliseconds
 		rdb.setRuning(true);
 		System.out.println("load2");
 
