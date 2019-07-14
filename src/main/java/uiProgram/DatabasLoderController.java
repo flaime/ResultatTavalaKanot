@@ -31,6 +31,10 @@ private MainUi mainUi;
     
     @FXML
     Button readDatabas;
+
+	@FXML
+	Button selectdatabas;
+
     @FXML
     TextField databasURL;
 
@@ -145,6 +149,10 @@ private MainUi mainUi;
 	public void autoLoadPdfOn(){
 		System.out.println("load");
 		readDatabas.setDisable(true);
+		selectdatabas.setDisable(true);
+		reloadIntervall.setDisable(true);
+		replace.setDisable(true);
+		skipp.setDisable(true);
 		int seconds = Integer.parseInt(reloadIntervall.getText());
 		if(seconds == 0){
 			seconds = 10;
@@ -165,6 +173,10 @@ private MainUi mainUi;
 		System.out.println("load3");
 
 		readDatabas.setDisable(false);
+		selectdatabas.setDisable(false);
+		reloadIntervall.setDisable(false);
+		replace.setDisable(false);
+		skipp.setDisable(false);
 		rdb.setRuning(false);
 		System.out.println("load4");
 

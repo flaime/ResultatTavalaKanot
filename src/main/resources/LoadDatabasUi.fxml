@@ -28,7 +28,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#handleShoseDatabas" text="Select databas">
+                  <Button fx:id="selectdatabas" mnemonicParsing="false" onAction="#handleShoseDatabas" text="Select databas">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

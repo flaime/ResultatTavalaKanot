@@ -90,10 +90,14 @@ public class ReloadDatabasAutomatic extends Thread{// implements Runnable {
 		
 		lock.lock();
 		try {
-			if (replace == true)
+			if (replace == true){
+				mainUi.addKlubbarErsätt(t);
 				mainUi.addLoppErsätt(t);
-			else
+			}
+			else{
+				mainUi.addKlubbarHoppaÖver(t);
 				mainUi.addLoppHoppaÖver(t);
+			}
 		} finally {
 		    lock.unlock();
 		}
