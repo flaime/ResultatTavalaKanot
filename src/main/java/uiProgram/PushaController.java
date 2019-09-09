@@ -21,7 +21,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 
-import javax.annotation.Resources;
+//import javax.annotation.Resources;
 
 /**
  * @author ahlin
@@ -31,16 +31,16 @@ public class PushaController {
 
     @FXML
     private TextArea PushInfo;
-    
+
     @FXML
     private TextField serverSokvag;
-    
+
     @FXML
     private TextField attTaBort;
 
     @FXML
     private TextField pushSecMellan;
-    
+
     @FXML
     private TextField competitionName;
 
@@ -59,6 +59,10 @@ public class PushaController {
     private MainUi mainUi;
 
     private ScheduledExecutorService executor;
+
+    private String comepetition = "{}";
+    private String clubs = "{}";
+    private LocalDateTime nextForcePush = LocalDateTime.now();
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -89,7 +93,7 @@ public class PushaController {
 
 	/**
      * Is called by the main application to give a reference back to itself.
-     * 
+     *
      * @param mainApp
      */
     public void setMainApp(MainUi mainUi) {
@@ -97,13 +101,30 @@ public class PushaController {
     }
     @FXML
     private void startStopKnapp(){
-//		showAlertInformation("Information", "Finns ej", "Detta är inte än gjort så det funkar tyvär inte än automatiskt utan måste pushas manuelt :/ Här kommer lite info: \nSkapad av:\nLinus Ahlin Hamberg\nFör frågor kontakta mnig på ah.linus@gmail.com\nHoppas det funkar bra och mycket skoj och glädje!\nJa eller om du vill vara med och fixa detta :) ");
-
 
 		Runnable puschRunnable = new Runnable() {
 			public void run() {
-				handelPusha();
-				PushInfo.appendText("Automatiskt puschat tävlingen (" + LocalDateTime.now().format(formatter) +") \n");
+                try {
+                    String comeptitionTemp = mainUi.getTävlingJson();
+                    String clubsTemp = mainUi.getklubarJson();
+
+                    if((comepetition.equalsIgnoreCase(comeptitionTemp) || clubs.equalsIgnoreCase(clubsTemp)) && nextForcePush.isAfter(LocalDateTime.now())){
+                        PushInfo.appendText("The data is identical ignore push and waits for next time (next force pusch is " + nextForcePush + "");
+                    }else{
+                        nextForcePush = LocalDateTime.now().plusMinutes(10);
+                        comepetition = comeptitionTemp;
+                        clubs = clubsTemp;
+                        sendPostKlubbar(serverSokvag.getText(), clubs);
+                        sendPostTävling(serverSokvag.getText(), comepetition, competitionName.getText());
+                    }
+
+                } catch (IOException e) {
+                    PushInfo.appendText("Gick inte att pusha prova ändra sökvögen eller liknande lycka till ");
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                PushInfo.appendText("Automatiskt puschat tävlingen (" + LocalDateTime.now().format(formatter) +") \n");
 				System.out.println("Hello world");
 			}
 		};
@@ -225,21 +246,21 @@ public class PushaController {
 			e.printStackTrace();
 		}
     }
-    
+
     private void removeHelaTävling(String strURL) throws Exception {
 			strURL += "/api/values/";//"http://localhost:6423/api/values/";
 			String postData = "x=val1&y=val2";
 			URL url = new URL(strURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("DELETE");
-			conn.setRequestProperty("Content-Type","application/json"); 
+			conn.setRequestProperty("Content-Type","application/json");
 			conn.setRequestProperty("Content-Length", "" + Integer.toString(postData.getBytes().length));
 
-			
+
 			conn.setUseCaches(false);
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
-			
+
 			// How to add postData as http body?
 //			String str = jsonTävling;// "{\"datum\":\"kalaskuldatum\",\"loppena\":[{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:37\",\"klass\":\"H14\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"1\",\"banorna\":[]},{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:40\",\"klass\":\"H14\",\"typ\":\"försök\",\"typNummer\":\"2\",\"loppNummer\":\"2\",\"banorna\":[]},{\"Datum\":\"12/4/2003\",\"distans\":\"500m\",\"tid\":\"12:41\",\"klass\":\"H16\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"3\",\"banorna\":[{\"namn\":\"Klas G�ran\",\"Klubb\":\"närkets pk\",\"bana\":\"1\",\"tid\":\"12 min\"},{\"namn\":\"jonas lefson\",\"Klubb\":\"närkets pk\",\"bana\":\"2\",\"tid\":\"9 min\"},{\"namn\":\"M�rten Frisk\",\"Klubb\":\"Kalix paddelf�rening\",\"bana\":\"3\",\"tid\":\"12 min\"}]},{\"Datum\":\"12/4/2003\",\"distans\":\"1000m\",\"tid\":\"12:43\",\"klass\":\"D14\",\"typ\":\"försök\",\"typNummer\":\"1\",\"loppNummer\":\"4\",\"banorna\":[]}]}";
 //			byte[] outputInBytes = str.getBytes("UTF-8");
@@ -247,16 +268,16 @@ public class PushaController {
 //			
 //			os.write( outputInBytes );    
 //			os.close();
-			
-			
+
+
 			int responseCode = conn.getResponseCode();
 			PushInfo.appendText("Sending 'Delete' request to URL : " + url + "\n");
 			PushInfo.appendText("Response Code : " + responseCode + "\n");
-			
+
 			System.out.println("\nSending 'POST' request to URL : " + url);
 			System.out.println("Response Code : " + responseCode);
-			
-			
+
+
 			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
@@ -271,7 +292,7 @@ public class PushaController {
 			PushInfo.appendText("Det som servern la till: "+response.toString() + "\n---------------------\n");
 
     }
-    
+
 
     /**
      * Opens an about dialog.
