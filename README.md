@@ -21,6 +21,7 @@ Men några saker jag vet och tänkte fixa när jag får tid
 - [ ] gärna lite interaktion så den kanvara lättare att lägga till personer, typ att den ger förslag på personer och klubbar
 - [ ] Något som kan städa upp röra med PDF inläsing man får Parsningen nu typ att den tittar på olika typer och ser och försöker sätta alla som hamnar i fler kolumn i rätt kolumn. Sedan om den också skulle kunna matcha namn mot en lista så skulle den kunna utföra uppdelnigne mellan namn och klubb bättre när de täcker hela raden. Eller bara skriva om parsningen så den tittar på om råden istället för att bara plocka ut det som en stor klump.
 - [ ] Arbeta på att den ska bli "snål" på "internet" den andvänder. (Bara puscha om den måste [x], komprimera innan den puchar [ ], baraq pu7scha diffar [ ])
+- [ ] Uppdatera till Java 11 för oss stackare till utvecklare ;) 
 
 ##Testköra
 Programet är designat för att läsa in resulat PDF:er eller direkt från tävlingsdatabasen som kommer ur kanottävlingssytem (ERTornamnet) producerar ([se dem här](https://github.com/flaime/ResultatTavalaKanot/tree/master/PDFer%20att%20testa%20med)). Men hoppas kunna bredda det till bättre för att parasa PDF:er som jag gjort är inte hundra... 
