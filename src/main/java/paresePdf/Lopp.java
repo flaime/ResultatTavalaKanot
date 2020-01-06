@@ -161,7 +161,7 @@ public class Lopp {
 
 	public String getJson() {
 		String json = "{";
-		json += transformTillVärde("date", Datum.getValue());
+		json += transformTillVärde("dateTime", Datum.getValue() + "T" + tid.getValue() + ":00");
 		json += ",";
 		json += transformTillVärde("distance", distans.getValue());
 		json += ",";

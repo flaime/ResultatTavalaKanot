@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.apache.commons.validator.GenericValidator;
 import paresePdf.Lopp;
 
 /**
@@ -35,6 +35,9 @@ public class LoppEditDialogController {
     private Stage dialogStage;
     private Lopp lopp;
     private boolean okClicked = false;
+
+    private static final String TIME24HOURS_PATTERN =
+            "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -133,11 +136,11 @@ public class LoppEditDialogController {
         if (klassLable.getText() == null || klassLable.getText().length() == 0) {
             errorMessage += "No valid class!\n"; 
         }
-        if (startTidLable.getText() == null || startTidLable.getText().length() == 0) {
-            errorMessage += "No valid startn time!\n"; 
+        if (startTidLable.getText() == null || startTidLable.getText().length() == 0 || !validateTime(startTidLable.getText())) {
+            errorMessage += "No valid startn time! (foramat is \"HH:MM\")\n";
         }
         if (typAvLoppLable.getText() == null || typAvLoppLable.getText().length() == 0) {
-            errorMessage += "No valid startn time!\n"; 
+            errorMessage += "No valid typ av lopp!\n";
         }
         if (typAvLoppNummer.getText() == null || typAvLoppNummer.getText().length() == 0) {
             errorMessage += "No valid heat (lopp) number!\n";
@@ -149,8 +152,8 @@ public class LoppEditDialogController {
                 errorMessage += "No valid heat (lopp) number (must be an integer)!\n"; 
             }
         }
-        if (datumLable.getText() == null || startTidLable.getText().length() == 0) {
-            errorMessage += "No valid startn time!\n"; 
+        if (datumLable.getText() == null || datumLable.getText().length() == 0 || !validateDate(datumLable.getText()) ) {
+            errorMessage += "No valid date fromat! (Format \"yyy-mm-dd\")\n";
         }
         
 
@@ -176,6 +179,28 @@ public class LoppEditDialogController {
 
             return false;
         }
+    }
+
+    /**
+     * Validate time in 24 hours format with regular expression
+     * @param time time address for validation
+     * @return true valid time fromat, false invalid time format
+     * TODO maybe use commons-validator
+     */
+    public static boolean validateTime(final String time){
+        Pattern pattern = Pattern.compile(TIME24HOURS_PATTERN);
+        Matcher matcher = pattern.matcher(time);
+        return matcher.matches();
+
+    }
+
+    /**
+     * Validate date in YYYY-MM-DD format with apache commons-validator
+     * @param date date address for validation
+     * @return true valid date fromat, false invalid date format
+     */
+    public static boolean validateDate(final String date){
+        return GenericValidator.isDate(date, "yyyy-MM-dd", true);
     }
     
 	public static boolean testOmDeÄrTal(String s){

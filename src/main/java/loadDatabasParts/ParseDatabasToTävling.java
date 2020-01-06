@@ -7,11 +7,7 @@ import java.lang.reflect.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import paresePdf.*;
 
@@ -101,7 +97,7 @@ public class ParseDatabasToTävling {
 					lopp.get(StartOrResultat.getInt("lopp")).addBana(new ArrayList<Bana>( Arrays.asList(b)));// add(lop);
 					System.out.println(b);
 				}else if( b != null){
-					Lopp lop = new Lopp(StartOrResultat.getString("Datum"), StartOrResultat.getString("Distans"), StartOrResultat.getString("Starttid"), StartOrResultat.getString("Klass"), StartOrResultat.getString("Omgång"), StartOrResultat.getInt("Omgångnr"), StartOrResultat.getInt("Lopp"));
+					Lopp lop = new Lopp(transformDate(StartOrResultat.getString("Datum")), StartOrResultat.getString("Distans"), StartOrResultat.getString("Starttid"), StartOrResultat.getString("Klass"), StartOrResultat.getString("Omgång"), StartOrResultat.getInt("Omgångnr"), StartOrResultat.getInt("Lopp"));
 					lop.addBana(new ArrayList<Bana>( Arrays.asList(b)));
 					lopp.put(new Integer(StartOrResultat.getInt("lopp")), lop);
 				}
@@ -118,6 +114,16 @@ public class ParseDatabasToTävling {
 		System.out.println("Tävling = " + Tävling);
 		
 		return Tävling;
+	}
+
+	/**
+	 * removes the "time" from the date and makes sure there always is data there.
+	 * The default date is 1800-01-01
+	 * @param startOrResultat
+	 * @return
+	 */
+	public static String transformDate(String startOrResultat){
+		return Optional.ofNullable(startOrResultat).orElse("1800-01-01 00:00:00.000000") .split(" ")[0];
 	}
 
 	/**
