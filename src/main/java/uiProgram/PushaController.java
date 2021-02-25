@@ -1,9 +1,6 @@
 package uiProgram;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,11 +12,14 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.UnaryOperator;
 
+import hjälpprogram.HttpUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+
+import javax.net.ssl.HttpsURLConnection;
 
 //import javax.annotation.Resources;
 
@@ -197,45 +197,19 @@ public class PushaController {
 	}
 
 	private void postToServer(String puschUrl, String body) throws IOException {
-
-		URL url = new URL(puschUrl);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("POST");
-		conn.setRequestProperty("Content-Type", "application/json");
-
-		conn.setUseCaches(false);
-		conn.setDoInput(true);
-		conn.setDoOutput(true);
-
-		// How to add postData as http body?
 		System.out.println("Body being posted: \n" + body);
-		byte[] outputInBytes = body.getBytes("UTF-8");
-		OutputStream os = conn.getOutputStream();
+		HttpUtils.Feedback feedback = new HttpUtils().postCall(puschUrl, body);
 
-		os.write(outputInBytes);
-		os.close();
+		System.out.println("Sending 'POST' request to URL : " + puschUrl);
+		System.out.println("Response status: " + feedback.getHttpCode());
+		System.out.println(feedback.getMessage());
 
-		int responseCode = conn.getResponseCode();
-		PushInfo.appendText("Sending 'POST' request to URL : " + url + "\n");
-		PushInfo.appendText("Response Code : " + responseCode + "\n");
-
-		System.out.println("\nSending 'POST' request to URL : " + url);
-		System.out.println("Response Code : " + responseCode);
-
-
-		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-		in.close();
-
-		//print result
-		System.out.println(response.toString());
-		PushInfo.appendText("Det som servern la till: " + response.toString() + "\n---------------------\n");
+		PushInfo.appendText("Sending 'POST' request to URL : " + puschUrl + "\n");
+		PushInfo.appendText("Response Code : " + feedback.getHttpCode() + "\n");
+		PushInfo.appendText("Response info : " + feedback.getMessage() + "\n");
 	}
+
+
 
     @FXML
     private void handleTaBort(){
