@@ -143,6 +143,11 @@ public class RootLayoutController {
         alert.showAndWait();
     }
 
+    @FXML
+    private void handelSqlDatabas(){
+        mainUi.showSqlEditor();
+    }
+
     /**
      * Closes the application.
      */

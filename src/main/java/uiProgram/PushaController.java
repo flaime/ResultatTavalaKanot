@@ -60,8 +60,8 @@ public class PushaController {
 
     private ScheduledExecutorService executor;
 
-    private String comepetition = "{}";
-    private String clubs = "{}";
+    private static String comepetition = "{}";
+    private static String clubs = "{}";
     private LocalDateTime nextForcePush = LocalDateTime.now();
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -108,8 +108,9 @@ public class PushaController {
                     String comeptitionTemp = mainUi.getTävlingJson();
                     String clubsTemp = mainUi.getklubarJson();
 
-                    if((comepetition.equalsIgnoreCase(comeptitionTemp) || clubs.equalsIgnoreCase(clubsTemp)) && nextForcePush.isAfter(LocalDateTime.now())){
+                    if((comepetition.equalsIgnoreCase(comeptitionTemp) && clubs.equalsIgnoreCase(clubsTemp)) && nextForcePush.isAfter(LocalDateTime.now())){
                         PushInfo.appendText("The data is identical ignore push and waits for next time (next force pusch is " + nextForcePush + "");
+						System.out.println("comepetition: " + comepetition);
                     }else{
                         nextForcePush = LocalDateTime.now().plusMinutes(10);
                         comepetition = comeptitionTemp;
@@ -125,7 +126,6 @@ public class PushaController {
                     e.printStackTrace();
                 }
                 PushInfo.appendText("Automatiskt puschat tävlingen (" + LocalDateTime.now().format(formatter) +") \n");
-				System.out.println("Hello world");
 			}
 		};
 

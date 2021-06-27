@@ -29,6 +29,7 @@ public class HttpUtils {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(wr, "UTF-8"));
             writer.write(data);
             writer.close();
+            wr.flush();
             wr.close();
 
             Reader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
